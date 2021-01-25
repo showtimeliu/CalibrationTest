@@ -24,6 +24,8 @@ pdFFT = fft(pdData);
 figure, plot(10 * log10((abs(pdFFT) .^ 2))); xlim([1, nMidLineLength]); 
 
 nLeft = 47; nRight = 71; 
+nRound = 32; 
+pdMask = calculateMask(nLineLength, nLeft, nRight, nRound); 
 
 
 
