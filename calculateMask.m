@@ -29,13 +29,18 @@ if (nLeft >= nRight)
 end
 
 %% create mask
-pdMask = zeros(nMidLineLength, 1); 
+pdMask = zeros(nLineLength, 1); 
 
 for nPoint = 1 : nMidLineLength
    if (nPoint > nLeft - nRound && nPoint <= nLeft)
        pdMask(nPoint) = 0.5 * (cos(pi * (nPoint - nLeft) / nRound) + 1); 
    end
-    
+   if (nPoint > nLeft && nPoint <= nRight)
+       pdMask(nPoint) = 1.0; 
+   end
+   if (nPoint > nRight && nPoint <= nRight + nRound)
+       pdMask(nPoint) = 0.5 * (cos(pi * (nPoint - nRight) / nRound) + 1); 
+   end
 end
 
 end
